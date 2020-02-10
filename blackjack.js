@@ -82,19 +82,25 @@ function dealcards(person){
     }
 }
 
+function clear(person){
+    person.pLabel.innerHTML="";
+    person.hLabel.innerHTML="";
+    person.aCount=0;
+    person.points=0;
+}
+
 document.getElementById("deal-button").addEventListener("click", function(e){
-    dealer.pLabel.innerHTML="";
-    player.pLabel.innerHTML="";
-    dealer.aCount=0;
-    player.aCount=0;
-    dealer.points=0;
-    player.points=0;
-    dealer.hLabel.innerHTML="";
-    player.hLabel.innerHTML="";
+        clear(dealer);
+        clear(player);
         dealcards(dealer);
         dealcards(player);
         dealcards(dealer);
         dealcards(player);
+
+
+
+
+
 });
 
 document.getElementById("hit-button").addEventListener("click", function(e){
