@@ -5,10 +5,8 @@ deck=[];
 value=0;
 
 suits.forEach(function(suit){
-
     cardValues.forEach(function(cardValue){
-        imageURL="./images/"+cardValue+suit+".jpg";
-        //   console.log(imageURL);
+        imageURL="./images/"+cardValue+suit+".jpg";  //   console.log(imageURL);
         if (cardValue=="J"||cardValue=="Q"||cardValue=="K"){
             value=10;
         }
@@ -18,14 +16,11 @@ suits.forEach(function(suit){
         }
         else{
             value=cardValue;
-        };
-        console.log(value);
+        };  console.log(value);
         
         let imgAndValue={URL:imageURL, v:value};
         deck.push(imgAndValue);
-
     })
-
 })
 
 function shuffleArray(deck) {
@@ -44,14 +39,11 @@ let dH=document.getElementById("dealer-hand");
 let pH=document.getElementById("player-hand");
 let dP=document.getElementById("dealer-points");
 let pP=document.getElementById("player-points");
-
-
 let dealer={hLabel:dH, pLabel:dP, points:0, aCount:0};
 let player={hLabel:pH, pLabel:pP, points:0, aCount:0};
 let curCard={};
 
 function dealcards(person){
-
     let imgTag=document.createElement("img");
  
     curCard=deck.pop();
@@ -59,9 +51,8 @@ function dealcards(person){
     imgTag.setAttribute("class","card");
     person.hLabel.appendChild(imgTag);
 
-    if(curCard.v==11){
-        person.aCount++; //count Aces
-        console.log("got and Ace!");
+    if(curCard.v==11){ //count Aces
+        person.aCount++;     console.log("got an Ace!");
     }
 
     person.points=curCard.v+person.points;
@@ -96,11 +87,6 @@ document.getElementById("deal-button").addEventListener("click", function(e){
         dealcards(player);
         dealcards(dealer);
         dealcards(player);
-
-
-
-
-
 });
 
 document.getElementById("hit-button").addEventListener("click", function(e){
@@ -111,13 +97,13 @@ document.getElementById("stand-button").addEventListener("click", function(e){
     while (dealer.points<=16){
         dealcards(dealer);
     }
-    if (dealer.points>player.points){
+    if (22>dealer.points>player.points){
         dealer.pLabel.textContent=dealer.points +" points! and the dealer wins!";
     }
     else if (dealer.points<player.points&&player.points<22){
         player.pLabel.textContent=player.points +" points! and you win!";
     }
-    else{
+    else if(dealer.points==player.points){
         player.pLabel.textContent=player.points + " Friendly Game, Pushed";
         dealer.pLabel.textContent=dealer.points + " Friendly Game, Pushed"
     }
