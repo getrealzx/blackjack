@@ -1,8 +1,9 @@
 let suits = ["H", "D", "S", "C"];
 let cardValues = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
 let imgeURL="";
-deck=[];
-value=0;
+let deck=[];
+let value=0;
+let stand=1;
 
 suits.forEach(function(suit){
     cardValues.forEach(function(cardValue){
@@ -39,8 +40,8 @@ let dH=document.getElementById("dealer-hand");
 let pH=document.getElementById("player-hand");
 let dP=document.getElementById("dealer-points");
 let pP=document.getElementById("player-points");
-let dealer={hLabel:dH, pLabel:dP, points:0, aCount:0};
-let player={hLabel:pH, pLabel:pP, points:0, aCount:0};
+let dealer={hLabel:dH, pLabel:dP, points:0, aCount:0, w:0};
+let player={hLabel:pH, pLabel:pP, points:0, aCount:0, w:0, bank:0};
 let curCard={};
 
 function dealcards(person){
@@ -63,10 +64,12 @@ function dealcards(person){
     }
 
     else if(person.points>21){
-        person.pLabel.textContent=person.points+" Points is over 21!! Lose!!";    
+        person.pLabel.textContent=person.points+" Points is over 21!! Lose!!";   
+        person.w--;
     }
     else if(person.points==21){
-        person.pLabel.textContent="You got 21! You Win!"
+        person.pLabel.textContent="Got 21! Win!";
+        person.w++;
     }
     else{
         person.pLabel.textContent=person.points+" Points";
@@ -78,8 +81,10 @@ function clear(person){
     person.hLabel.innerHTML="";
     person.aCount=0;
     person.points=0;
+    person.w=0;
+    stand=0;
 }
-
+//fuction dealerMarkB4Hit()
 document.getElementById("deal-button").addEventListener("click", function(e){
         clear(dealer);
         clear(player);
@@ -87,24 +92,48 @@ document.getElementById("deal-button").addEventListener("click", function(e){
         dealcards(player);
         dealcards(dealer);
         dealcards(player);
+        console.log("Player Wining Points: " +player.w);
+        console.log("Dealer Wining Points: " +dealer.w);
 });
 
 document.getElementById("hit-button").addEventListener("click", function(e){
-    dealcards(player);
+    if(stand==0){
+        dealcards(player);
+    }
+    else if(stand==1){
+        player.pLabel.textContent="You have already Stood!"
+        if (dealer.point<22 && dealer.points>player.points){
+            dealer.pLabel.textContent=dealer.points +" points! and the dealer wins!";
+        }
+    }
+    console.log("Player Wining Points: " +player.w);
+    console.log("Dealer Wining Points: " +dealer.w);
+    
 });
 
 document.getElementById("stand-button").addEventListener("click", function(e){
-    while (dealer.points<=16){
-        dealcards(dealer);
-    }
-    if (22>dealer.points>player.points){
-        dealer.pLabel.textContent=dealer.points +" points! and the dealer wins!";
-    }
-    else if (dealer.points<player.points&&player.points<22){
-        player.pLabel.textContent=player.points +" points! and you win!";
-    }
-    else if(dealer.points==player.points){
-        player.pLabel.textContent=player.points + " Friendly Game, Pushed";
-        dealer.pLabel.textContent=dealer.points + " Friendly Game, Pushed"
+    stand=1;
+    if(player.points<22){
+        while (dealer.points<=16){
+                dealcards(dealer);
+        };
+        if (dealer.points>player.points&&(dealer.points<22)){
+            dealer.pLabel.textContent=dealer.points +" points! and the dealer wins!";
+            dealer.w++;
+        }
+        else if(dealer.points>21){
+            dealer.pLabel.textContent=dealer.points +" points! and the dealer lose!";
+            player.pLabel.textContent="You win!";
+        }
+        else if ((dealer.points<player.points)&&(player.points<22)){
+            player.pLabel.textContent=player.points +" points! and you win!";
+            player.w++;
+        }
+        else if(dealer.points==player.points){
+            player.pLabel.textContent=player.points + " Friendly Game, Pushed";
+            dealer.pLabel.textContent=dealer.points + " Friendly Game, Pushed";
+        }
+            console.log("Player Wining Points: " +player.w);
+            console.log("Dealer Wining Points: " +dealer.w);
     }
 });
