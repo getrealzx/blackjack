@@ -5,6 +5,15 @@ let deck=[];
 let value=0;
 let stand=0;
 let dealCount=0;
+let dH=document.getElementById("dealer-hand");
+let pH=document.getElementById("player-hand");
+let dP=document.getElementById("dealer-points");
+let pP=document.getElementById("player-points");
+let dealer={hLabel:dH, pLabel:dP, points:0, aCount:0};
+let player={hLabel:pH, pLabel:pP, points:0, aCount:0, bank:500};
+let curCard={};
+let bet=0;
+let totalBet=0;
 
 suits.forEach(function(suit){
     cardValues.forEach(function(cardValue){
@@ -21,8 +30,9 @@ suits.forEach(function(suit){
         let imgAndValue={URL:imageURL, v:value};
         deck.push(imgAndValue);
         deck.push(imgAndValue); //two decks;
+       
     })
-});
+}); console.log(deck);
 
 function shuffleArray(deck) {
     for (var i = deck.length - 1; i > 0; i--) {
@@ -36,24 +46,14 @@ function shuffleArray(deck) {
 
 shuffleArray(deck);
 
-let dH=document.getElementById("dealer-hand");
-let pH=document.getElementById("player-hand");
-let dP=document.getElementById("dealer-points");
-let pP=document.getElementById("player-points");
-let dealer={hLabel:dH, pLabel:dP, points:0, aCount:0};
-let player={hLabel:pH, pLabel:pP, points:0, aCount:0, bank:500};
-let curCard={};
-
-let bet=0;
-let totalBet=0;
 let betInfo=document.getElementById("bet-info");
 betInfo.innerHTML="Place Your Bet";
 let bank=document.getElementById("bank");
-bank.innerHTML="You have $"+ player.bank+" to play.";
+bank.innerHTML="You have $"+ player.bank+".";
 bBtn="";
 let fund='<h4>Insufficient Fund</h4><img src="https://images-na.ssl-images-amazon.com/images/I/61cL%2BM-SN%2BL._SX425_.jpg" style="width:180px;height: auto ;" alt="">';
-
 let betButton=document.getElementById("betButton");
+
 betButton=addEventListener("click",function(e){
    
     bBtn=e.target.textContent;
@@ -76,7 +76,7 @@ betButton=addEventListener("click",function(e){
         totalBet = totalBet + bet;
         player.bank = player.bank-bet;
         betInfo.innerHTML = "You are betting $" + totalBet;
-        bank.innerHTML = "You have $"+ player.bank + " to play.";
+        bank.innerHTML = "You have $"+ player.bank + ".";
     }
     else if(player.bank<bet){
         betInfo.innerHTML = fund;
@@ -94,7 +94,6 @@ function dealcards(person){
     if(curCard.v==11){ //count Aces
         person.aCount++;     console.log("got an Ace!");
     }
-
     person.points=curCard.v+person.points;
 
     if((person.points>21)&&(person.aCount>0)){
@@ -102,9 +101,13 @@ function dealcards(person){
         person.aCount = person.aCount -1;
         person.pLabel.textContent=person.points+" Points";
     }
-
+    if(player.points>21){
+        player.bank=player.bank-totalBet;
+        player.pLabel.textContent=player.points+" Points is over 21!! Lose!!";
+        betInfo.innerHTML="You lose $" + totalBet;
+    }
     else if(person.points==21){
-        person.pLabel.textContent="Got 21!";
+        person.pLabel.textContent="Got A BlackJack!";
     }
     else{
         person.pLabel.textContent=person.points+" Points";
@@ -125,16 +128,15 @@ function clear(person){
 };
 
 document.getElementById("deal-button").addEventListener("click", function(e){
-
     if (stand==1||dealCount==1){
     clear(dealer);
     clear(player);
     dealer.hLabel.setAttribute("class","hand");
     };
-    dealcards(dealer);
-    dealcards(player);
-    dealer.hLabel.setAttribute("class","hand backCard");
-    dealcards(player);
+    setTimeout(() => {dealer.hLabel.setAttribute("class","hand backCard");},300);
+    setTimeout(() => {dealcards(player);},600);
+    setTimeout(() => {dealcards(dealer);},1200);
+    setTimeout(() => {dealcards(player);},1500);
     dealCount=1;
 });
 
@@ -142,12 +144,8 @@ document.getElementById("hit-button").addEventListener("click", function(e){
     if(dealCount==0){
         alert("A game hasn't started! Hit the Deal button!");
     }
-    else if(stand==0){
-        dealcards(player);
-        if(player.points>21){
-            player.pLabel.textContent=player.points+" Points is over 21!! Lose!!";
-            betInfo.innerHTML="You lose $" + totalBet;
-        }
+    if(stand==0){
+        setTimeout(() => {dealcards(player);},500);
     }
     else if(stand==1){
         player.pLabel.textContent="You have already Stood!"
@@ -161,12 +159,14 @@ document.getElementById("stand-button").addEventListener("click", function(e){
     }
     else if(player.points<22){
         dealer.hLabel.setAttribute("class","hand");
-
+ 
         while (dealer.points<=16){
-                dealcards(dealer);
+            dealcards(dealer);
         };
         if (dealer.points>player.points&&(dealer.points<22)){
             dealer.pLabel.textContent=dealer.points +" Points! and the dealer wins!";
+            player.pLabel.textContent="You lose $"+totalBet+"!";
+            betInfo.innerHTML="You lose $" + totalBet;
         }
         else if(dealer.points>21){
             dealer.pLabel.textContent=dealer.points +" points! and the dealer lose!";
@@ -180,13 +180,12 @@ document.getElementById("stand-button").addEventListener("click", function(e){
             player.bank=player.bank+2*totalBet;
         }
         else if(dealer.points==player.points){
-            player.pLabel.textContent=player.points + " Friendly Game, Pushed";
-            dealer.pLabel.textContent=dealer.points + " Friendly Game, Pushed";
+            player.pLabel.textContent=player.points + "points. Friendly Game, Pushed";
+            dealer.pLabel.textContent=dealer.points + "points. Friendly Game, Pushed";
             player.bank=player.bank+totalBet;
         }
-        
     }
-    bank.innerHTML = "You have $"+ player.bank + " to play.";
+    bank.innerHTML = "You have $"+ player.bank + ".";
 });
 
 document.getElementById("clear-button").addEventListener("click", function(e){
@@ -196,5 +195,5 @@ document.getElementById("clear-button").addEventListener("click", function(e){
     dealer.hLabel.setAttribute("class","hand");
     clear(dealer);
     clear(player);
-    bank.innerHTML = "You have $"+ player.bank + " to play.";
+    bank.innerHTML = "You have $"+ player.bank + ".";
 })

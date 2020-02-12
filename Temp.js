@@ -79,3 +79,20 @@ document.getElementById("deal-button").addEventListener('click', function(e){
     console.log(n)
     document.getElementById('player-hand').append(n)
 })
+
+let deckBox=document.getElementById("deck");
+
+
+let deckStyle = "";
+deckCard=document.createElement("img");
+deckCard.src="./images/blue_back.jpg";
+
+let deckPosition=200;
+deckPosition++;
+deckStyle = "height: 110px; position:fixed;top:20px;left:" + deckPosition + "px";
+deckCard.setAttribute("style",deckStyle);
+deckBox.appendChild(deckCard);
+
+
+
+console.log(deckStyle);

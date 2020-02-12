@@ -1,16 +1,35 @@
 #table{
-    background-color: rgb(68, 151, 68);
+    /* background-color: rgb(68, 151, 68); */
+    position: relative;
+    background-image: linear-gradient(to top, rgb(2, 78, 2) 35%, rgb(72, 124, 72)100%);
     min-height: 600px;
     min-width: 300px;;
-    border-radius: 30px;
-    border: 3px solid black;
     margin: 20px;
     padding: 20px;
     padding-left: 35px;
     box-shadow: 5px 5px 10px black;
     font: 22px bold;
-    
+    border-image:url("./images/leather.png") 70 round;
+    border: 40px dotted transparent;
+    /* background-clip: padding-box; */
+    border-radius: 30px;
+    border: 15px solid black;
+   
 }
+
+/* #table::after{
+    position: absolute;
+    border-radius: 30px;
+    z-index: -1;
+    content: "";
+    
+    min-height: 600px;
+    min-width: 300px;;
+    margin: 20px;
+    padding: 20px;
+    /* background: linear-gradient(red, blue); */
+
+} */
 
 #messages{
     background-color: #fff;
@@ -20,18 +39,24 @@
 }
 
 .dealer{
-
     font-size: 25px;
-    color: rgb(24, 0, 0);
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 0px 0px 5px black;
+    color: #fff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+    padding: 5px;
 }
 
 
 .player{
 
     font-size: 25px;
-    color: white;
-    text-shadow: 1px 1px 2px black, 0 0 25px rgb(172, 175, 7), 0 0 5px rgb(0, 63, 24);
+    text-shadow: 0px 0px 5px black;
+    color: #fff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+    padding: 5px;
+
 }
 
 
@@ -57,6 +82,7 @@
     /* background-color: #f44336; */
     font-weight: bold;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
     margin:8px;
 }
 
@@ -76,7 +102,7 @@
     flex-direction: row;
     background-color: rgb(179, 206, 131);
     width:85%;
-    min-height: 120px;
+    min-height: 115px;
     margin-bottom: 25px;
     margin-top: 10;
     border-radius: 14px;
@@ -84,7 +110,7 @@
     border-width: 5px ;
     border-color: rgb(239, 255, 18);
     padding: 10px;
-    line-height: 140px;
+    line-height: 110px;
 
 }
 
@@ -93,7 +119,7 @@ img{
 }
 
 .card{
-    height: 115px;
+    height: 110px;
     box-shadow: 1px 1px 1px black;
     margin-left: 10px;
 
@@ -102,8 +128,7 @@ img{
 #bet-info{
     position: relative;
     margin-left:30px;
-    min-height: 50px;
-    margin:20px;
+    margin:px;
     min-height: 30px;
     background-color: #fff;
     line-height: 50px;
@@ -121,17 +146,17 @@ img{
 .bb{
     position: relative;
     top:0px;
-    left:10px;
-    height: 65px;
+    left:15px;
+    height: 60px;
     width: 65px;
-    border: 5px double rgb(92, 92, 92, 20);
+    border-radius: 50%;
+    border: 7px dashed rgb(0, 0, 0);
     font-family: fantasy;
     font-size: 18px;
     background-color: rgb(18, 42, 3);
-    border-radius: 50%;
     color:white;
     margin:10px;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 5px 11px 5px black;
        
 }
 
@@ -144,29 +169,34 @@ img{
 #bank{
     position: relative;
     height: 20px;
-    margin-left: 25px;
+    margin-left: 28px;
     font-size: 17px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color:green;
-    width: 220px;
+    background-image: linear-gradient( to top,  rgb(21, 46, 21), rgb(2, 78, 2));
+    width: 240px;
     text-align: center;
     border-radius: 14px;
     border: 2px solid yellow;
     padding: 3px;
     color: rgb(230, 230, 202);
+    border-top: none;
+    margin-top: 5px;
+    border-bottom: 2px double yellow;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
 
 }
 
 .backCard{
-    
-    /* margin-left: 10px; */
+
     
     background-image: url("./images/blue_back.jpg");
-    background-attachment: fixed;
-    background-size: auto 115px;
+    /* background-attachment: fixed; */
+    background-size: auto 110px;
     background-repeat: no-repeat;
-    background-position: 120px 93px;
-    -moz-border-radius: 10px;
+    background-position: 65px 20px;
+
+
 
 }
 
@@ -179,3 +209,25 @@ img{
     font-size: 100px;
 }
 
+
+
+
+
+
+body{
+
+    background-image: linear-gradient(to bottom right,rgb(0, 0, 0) 10%,rgb(246, 255, 163) 75%), url(./images/money.jpg);
+    background-blend-mode: darken;
+    background-size: 100vw 100vh;
+    
+
+
+
+}
+
+/* #deck{
+
+    height: 110px;
+    box-shadow: 1px 1px 1px rgb(17, 13, 27); 
+
+} */

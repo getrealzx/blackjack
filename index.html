@@ -9,12 +9,14 @@
   </head>
   <body>
 
-
-    <div id="table">
+    <div id="table" class="front">
+      <div id="deck">
+      </div>
+      
 
         <div id="messages"></div>
         
-        <label class="dealer">Dealer: </label>
+        <span class="dealer">Dealer: </span>
         
         <label id="dealer-points" class="points"></label>
         
@@ -23,7 +25,7 @@
         
         </div>
         
-        <label class="player">Player: </label>
+        <span class="player">Player: </span>
         
         <label id="player-points" class="points"> </label>
         
@@ -31,15 +33,15 @@
         
         </div>
         <div id="bet-info"></div>
-        <div id="bank"></div>
+        
 
         <div id="betButton">
           
           <button id="bet-10" class="bb" style="background-color:white; color:black" >$10</button>
-          <button  id="bet-25" class="bb" style="background-color:brown" >$25</button>
-          <button id="bet-100" class="bb" style="background-color:black" >$100</button>
+          <button  id="bet-25" class="bb" style="background-color:brown;border-color: white;" >$25</button>
+          <button id="bet-100" class="bb" style="background-color:black; border-color: yellow;" >$100</button>
         </div>
-        
+        <div id="bank"></div><br>
 
         <div >
         
@@ -50,14 +52,12 @@
           <button id="stand-button" class="buttons">Stand</button>
           
           <button id="clear-button" class="buttons" style="background-color: rgb(234, 243, 149);">New Hand</button>
-
-
           
-          </div>
-
+        </div>
         
         </div>
-
+        
+        <div></div>
     <script src="blackjack.js">    </script>    
     <script></script>
 
