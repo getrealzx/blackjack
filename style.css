@@ -1,5 +1,5 @@
 #table{
-    background-color: rgb(83, 206, 83);
+    background-color: rgb(68, 151, 68);
     min-height: 600px;
     min-width: 500px;;
     border-radius: 30px;
@@ -55,6 +55,9 @@
     border-radius: 14px;
     box-shadow: 0 8px 16px rgba(7, 87, 20, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
     /* background-color: #f44336; */
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin:8px;
 }
 
 .buttons:hover {
@@ -71,24 +74,108 @@
 .hand{
     display: flex;
     flex-direction: row;
-
-    background-color: #fff;
+    background-color: rgb(179, 206, 131);
     width:60%;
-    height: 115px;
-    min-height: 80px;
+    min-height: 120px;
     margin-bottom: 25px;
     margin-top: 10;
     border-radius: 14px;
-    border-style: inset;
+    border-style: solid;
     border-width: 5px ;
-    border-color: rgb(55, 226, 55);
-    padding: 4px;
+    border-color: rgb(239, 255, 18);
+    padding: 10px;
+    line-height: 140px;
+    
 
 }
 
+img{
+    border-radius: 5px;
+}
+
 .card{
-    height: 102px;
+    height: 115px;
     box-shadow: 1px 1px 1px black;
     margin-left: 10px;
 
+}
+
+#bet-info{
+    position: relative;
+    margin-left:30px;
+    min-height: 50px;
+    margin:20px;
+    min-height: 30px;
+    background-color: #fff;
+    line-height: 50px;
+    width: 220px;
+    text-align: center;
+    border-radius: 14px;
+    border: 5px solid yellow;
+    padding: 4px;
+    background-color: rgb(124, 46, 46);
+    color: #fff;
+
+}
+
+
+.bb{
+    position: relative;
+    top:0px;
+    left:10px;
+    height: 65px;
+    width: 65px;
+    border: 5px double rgb(92, 92, 92, 20);
+    font-family: fantasy;
+    font-size: 18px;
+    background-color: rgb(18, 42, 3);
+    border-radius: 50%;
+    color:white;
+    margin:10px;
+    box-shadow: 5px 5px 5px black;
+       
+}
+
+.bb:active {
+    background-color: #ececec;
+    box-shadow: 0 5px rgb(4, 148, 23);
+    transform: translateY(2px);
+}
+
+#bank{
+    position: relative;
+    height: 20px;
+    margin-left: 25px;
+    font-size: 17px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color:green;
+    width: 220px;
+    text-align: center;
+    border-radius: 14px;
+    border: 2px solid yellow;
+    padding: 3px;
+    color: rgb(230, 230, 202);
+
+}
+
+.backCard{
+    
+    /* margin-left: 10px; */
+    
+    background-image: url("./images/blue_back.jpg");
+    background-attachment: fixed;
+    background-size: auto 115px;
+    background-repeat: no-repeat;
+    background-position: 120px 93px;
+    -moz-border-radius: 10px;
+
+}
+
+.fund{
+    background-image: url("https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg");
+    background-size: 200px auto;
+    background-attachment: fixed;
+    background-position: 0px 0px;
+    background-color: black;
+    font-size: 100px;
 }
