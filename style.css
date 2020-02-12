@@ -1,7 +1,7 @@
 #table{
     background-color: rgb(68, 151, 68);
     min-height: 600px;
-    min-width: 500px;;
+    min-width: 300px;;
     border-radius: 30px;
     border: 3px solid black;
     margin: 20px;
@@ -75,7 +75,7 @@
     display: flex;
     flex-direction: row;
     background-color: rgb(179, 206, 131);
-    width:60%;
+    width:85%;
     min-height: 120px;
     margin-bottom: 25px;
     margin-top: 10;
@@ -85,7 +85,6 @@
     border-color: rgb(239, 255, 18);
     padding: 10px;
     line-height: 140px;
-    
 
 }
 
@@ -179,3 +178,4 @@ img{
     background-color: black;
     font-size: 100px;
 }
+

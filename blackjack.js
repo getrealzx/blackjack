@@ -23,7 +23,6 @@ suits.forEach(function(suit){
         deck.push(imgAndValue); //two decks;
     })
 });
-console.log(deck);
 
 function shuffleArray(deck) {
     for (var i = deck.length - 1; i > 0; i--) {
@@ -35,9 +34,7 @@ function shuffleArray(deck) {
     return deck;
 };
 
-
 shuffleArray(deck);
-console.log(deck);
 
 let dH=document.getElementById("dealer-hand");
 let pH=document.getElementById("player-hand");
@@ -201,7 +198,3 @@ document.getElementById("clear-button").addEventListener("click", function(e){
     clear(player);
     bank.innerHTML = "You have $"+ player.bank + " to play.";
 })
-
-
-///deal empty card, then clear empty
-//display bank info
