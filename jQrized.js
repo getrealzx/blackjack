@@ -84,7 +84,7 @@ function dealcards(person){
     person.hLabel.append(imgTag);
 
     if(curCard.v==11){ //count Aces
-        person.aCount++;     console.log("got an Ace!");
+        person.aCount++;     console.log(" got an Ace!");
     }
     person.points=curCard.v+person.points;
 
