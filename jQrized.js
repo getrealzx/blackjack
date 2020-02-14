@@ -23,7 +23,7 @@ let df=0;
 suits.forEach(function(suit){
     cardValues.forEach(function(cardValue){
         imageURL="./images/"+cardValue+suit+".jpg";  //   console.log(imageURL);
-        new Image().src=imageURL;
+        new Image().src=imageURL;//preload
         if (cardValue=="J"||cardValue=="Q"||cardValue=="K"){
             value=10;
         }

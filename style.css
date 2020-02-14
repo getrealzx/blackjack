@@ -238,9 +238,13 @@ img{
 
 body{
 
-    background-image: linear-gradient(to bottom right,rgb(0, 0, 0) 10%,rgb(246, 255, 163) 75%), url(./images/money.jpg);
+    background-image: linear-gradient(to bottom right,rgb(0, 0, 0) 10%,rgb(246, 255, 163) 75%), url(./images/3px-tile.png);
     background-blend-mode: darken;
-    background-size: 100vw 100vh;
+    background-repeat: repeat;
+
+    background-color: #005e38;
+    background-image: url("./images/arabesque.png");
+
 
 }
 
