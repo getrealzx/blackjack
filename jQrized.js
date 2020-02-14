@@ -1,3 +1,8 @@
+var script = document.createElement('script');
+script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
+script.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(script);
+
 let suits = ["H", "D", "S", "C"];
 let cardValues = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
 let imgeURL="";
@@ -7,10 +12,8 @@ let stand=0;
 let dealCount=0;
 let dP=document.getElementById("dealer-points");
 let pP=document.getElementById("player-points");
-let dH=$("#dealer-hand");
-let pH=$("#player-hand");
-let dealer={hLabel:dH, pLabel:dP, points:0, aCount:0};
-let player={hLabel:pH, pLabel:pP, points:0, aCount:0, bank:500};
+let dealer={hLabel: $("#dealer-hand"), pLabel:dP, points:0, aCount:0};
+let player={hLabel: $("#player-hand"), pLabel:pP, points:0, aCount:0, bank:500};
 let curCard={};
 let bet=0;
 let totalBet=0;
