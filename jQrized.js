@@ -19,9 +19,14 @@ let bet=0;
 let totalBet=0;
 let df=0;
 
+window.onload = function(){
+    preloadImagesFromDirectory('./images/');
+}
+
 suits.forEach(function(suit){
     cardValues.forEach(function(cardValue){
         imageURL="./images/"+cardValue+suit+".jpg";  //   console.log(imageURL);
+
         if (cardValue=="J"||cardValue=="Q"||cardValue=="K"){
             value=10;
         }
