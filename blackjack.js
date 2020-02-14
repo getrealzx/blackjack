@@ -14,6 +14,7 @@ let player={hLabel:pH, pLabel:pP, points:0, aCount:0, bank:500};
 let curCard={};
 let bet=0;
 let totalBet=0;
+let df=0;
 
 suits.forEach(function(suit){
     cardValues.forEach(function(cardValue){
@@ -88,7 +89,7 @@ function dealcards(person){
     let imgTag=document.createElement("img");
     curCard=deck.pop();
     imgTag.src=curCard.URL;
-    imgTag.setAttribute("class","card");
+    df==1?imgTag.setAttribute("class","cardFlip"):imgTag.setAttribute("class","card");
     person.hLabel.appendChild(imgTag);
 
     if(curCard.v==11){ //count Aces
@@ -124,7 +125,8 @@ function clear(person){
     stand=0;
     bet=0;
     totalBet=0;
-    dealCount=0
+    dealCount=0;
+    df=0;
 };
 
 document.getElementById("deal-button").addEventListener("click", function(e){
@@ -161,7 +163,7 @@ document.getElementById("stand-button").addEventListener("click", function(e){
         dealer.hLabel.setAttribute("class","hand");
  
         while (dealer.points<=16){
-            dealcards(dealer);
+            dealcards(dealer);df = df + 1;
         };
         if (dealer.points>player.points&&(dealer.points<22)){
             dealer.pLabel.textContent=dealer.points +" Points! and the dealer wins!";
